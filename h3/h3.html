@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading... H3</title>
+    <link rel="stylesheet" href="/styles/global.css">
+    <link rel="stylesheet" href="/h3/h3.style.css">
+</head>
+<body>
+    <nav>
+        <h1>FitForge</h1>
+        <ul>
+            <li><a href="/">H1</a></li>
+            <li><a href="/h2/h2.html">H2</a></li>
+            <li><a href="/h3/h3.html" class="active">H3</a></li>
+        </ul>
+    </nav>
+    
+    <div class="main">
+        <div class="title"><h1>Software követelmény specifikáció</h1></div>
+
+        <h2>Bevezetés:</h2>
+        <ul>
+            <li><p>Ezen SRS dokumentum célja, hogy meghatározza a funkcionális és nem funkcionális követelményeit a “FitForge” fitness applikációnak. Útmutatóként szolgál munkatársainknak és támogatóinknak, hogy megértsék a project mibenlétét. Segítséget nyújt a fejlesztőknek és tesztelőknek az alapvető elemek megértéséhez.</p></li>
+            <li><p>A FitForge fitness applikáció lehetőséget ad a felhasználóknak arra, hogy egy személyre szabott eddzés és étrendet kapjanak, mely segítséget nyújt céljaik elérése érdekében, legyen az izomtömeg növelése, vagy fogyás, általános fittség növelése, stb...</p></li>
+            <li><p>Esetleged kifejezések tisztázása:</p></li>
+                <ol>
+                    <li>Felhasználói felület, azaz user interface, továbbiakban - UI.</li>
+                    <li>Application programming interface, továbbiakban -  API</li>
+                </ol>
+            <li><p>Összességében: Ez a dokumentum tartalmazni fogja, a funkcionális és nem funkcionális követelményeket, a rendszer használhatóságáról és megbízhatóságáról való dokumentációt, az esetlegesen felmerülő hibákat és korlátokat, valamint az applikáció interfészét.</p></li>
+        </ul>
+
+        <h2>Áttekintés:</h2>
+        <ul>
+            <li><p>A termék hardweres környezete:</p></li>
+            <ol>
+                <li><p>A szoftver egy felhő alapú linux szerveren fog futni (AWS) mobil eszközökre optimalizálva, ezzel biztosítva gyors válaszidőt és könnyű elérhetőséget. A szerver hardver követelmények szerint a szervernek meg kell felelni, legalább:</p></li>
+                <ol type="i">
+                    <li><b>Operációs rendszer:</b> Linux Ubuntu 20.04 vagy újabb</li>
+                    <li><b>Processzor:</b> 4-core CPU vagy több</li>
+                    <li><b>RAM:</b> 128GB ram. Az abszolút legjobbra törekedve, hogy minden esetben legyen elérhető erőforrás, és az APIok-at megfelelően kezelni lehessen.</li>
+                    <li><b>Tárhely:</b> 2TB tárhely az applikációs adatok kezelésére, cachingre, és backup mentésekre.</li>
+                    <li><b>Hálózat:</b> Minimum 1gbps sávszélesség, hogy a magas forgalmat is könnyedén lebonyolítsa.</li>
+                </ol>
+            </ol>
+                <li><p>A termék hardveres követelményei felhasználói szemszögből:</p></li>
+                <ol>
+                    <li>Android 10.0 - iOS 13.0 vagy magasabb</li>
+                    <li>4gb ram vagy több</li>
+                    <li>ARM alapú processzorok legalább 2GHz órajellel az optimális renderelés érdekében.</li>
+                    <li>Legalább 200mb tárhely az appdatának, és az eszközön történő caching-re</li>
+                </ol>
+                <li><p>A termék szoftveres környezete:</p></li>
+                <ol>
+                    <li>A rendszer felhő alapú Nginx Linux alapú szerveren fog operálni, mobil applikációkra optimalizálva. A backend API nodeJS-ben (16-os verzió vagy újabb) lesz kiépítve express JS framework használatával, hogy a HTTP requesteket megfeleően tudja kezelni.</li>
+                </ol>
+                <li><p>Kulcsfontosságú szoftver komponensek:</p></li>
+                <ol>
+                    <li><b>Web server:</b> Nginx 1.18 vagy újabb</li>
+                    <li><b>Adatbázis:</b> PostgreSQL version 13 vagy újabb megbízható relációs adatkezelés miatt, valamint a complex query lehetőségek miatt</li>
+                    <li><b>Backend programozási nyelve:</b> JavaScript (Node.js 16.0 verzió vagy újabb) a server side logic kezelésére, aszinkron feldolgozást lehetővé téve</li>
+                    <li><b>API protokollok:</b> REST a standard kliens-szerver kommunikációhoz, és GraphQL a rugalmas querizés érdekében, ha szükséges</li>
+                    <li><b>Push notifications:</b> FCM (Firebase Cloud Messaging)</li>
+                    <li><b>Frontend framework:</b> Az applikáció front-end része React Native – hogy támogassa a cross platform fejlesztést</li>
+                </ol>
+                <li><p>Hálózati környezet:</p></li>
+                <ol>
+                    <li><p>Protokollok:</p></li>
+                    <ol type="i">
+                    <li><b>HTTPS:</b> Minden kliens-szerver kommunikációs HTTPS-en keresztül történik, hogy biztosítsuk az adatok integritását és védelmét, TLS 1.2 (vagy újabb verzió) használatával</li>
+                    <li><b>HTTP/2:</b> A teljesítmény növelése érdekében, gyorsabb töltési időt érhetünk el vele</li>
+                    </ol>    
+                    <li><p>Tűzfal és bizonság:</p></li>
+                    <ol type="i">
+                        <li>Egy tűzfal lesz konfigurálva a szerveren, hogy csak is a szükséges portokat enegedélyezze. </li>
+                    </ol>    
+                    <li><p>DDos protekció:</p></li>
+                    <ol type="i">
+                        <li>Andti DDos elemek lesznek beépítve, hogy védelmet nyújtsanak a támadások ellen.</li>
+                    </ol>           
+                </ol>
+            </ol>
+        </ul>
+
+        <h2>Legfontosabb funkciók:</h2>
+        <ul>
+            <li><p>Kalória követés:</p></li>
+            <ol>
+                <li>A kalória követés lehetővé teszi a felhasználóknak, hogy nyomon kövessék az elfogyasztott kalóriák számát. A napi kalória limit túllépése, vagy esetleges alulmaradása esetén figyelmeztetéseket fog kiadni a felhasználóknak. A kalóriákat többféle képpen is nyomon lehet követni. A felhasználó manuálisan felviheti őket a rendszerbe, vagy élhet a kényelmesebb megoldással, ahol az elfogyasztott termék nevét, típusát, és súlyát a rendszerbe felvéve az algoritmus kiszámolja, hogy átlagosan mennyi kalóriát tartalmaz az elfogyaszott étel. Pl 1 menü: 300g rizs, 240g csirkemell, 150g brokkoli, azaz 
+                    100g rizs = 130 kalória, 3x 130
+                    100g csirkemell = 165 kalória, 2,4 x 165
+                    100g brokkoli = 34 kalória, 1,5 x 34
+                    Összességében: 390 + 396 + 51 = 837 kalória. Ha az elfogyasztott termék előre csomagolt, a termék hátulján általában fel vannak tüntetve a kalóriák. A felhasználónak elég csupán a termék nevét bevinni, és a rendszer az internetről megszerzi a szükséges informácikat a kalóriák kiszámításához.
+                </li>
+            </ol>
+            <li><p>Elégetett kalóriák mérése:</p></li>
+            <ol>
+                <li>A szoftver képes megbecsülni a felhasználó által elégetett kalória mennyiséget, amennyiben tisztában van az általa elfogyasztott ételekkel, a felhasználó testével kapcsolatos általános adatokkal, valamint ha feltételezheti, hogy a felhasználó betartaja az edzéstervét.</li>
+            </ol>
+            <li><p>Edzésterv összeállítása:</p></li>
+            <ol>
+                <li>Az AI alapú coach a felhasználók rendelkezésére áll, hogy összeállítsa a számukra szükséges eddzésterveket.</li>
+            </ol>
+            <li><p>Étrend összeállítása:</p></li>
+            <ol>
+                <li>Az AI alapú coach a felhasználók rendelkezésére áll, hogy összeállítsa a számukra szükséges étrendet.</li>
+            </ol>
+            <li><p>Pulzus, véroxigén szint, valamint az elégetett kalóriák pontos mérése:</p></li>
+            <ol>
+                <li>Amennyiben a felhasználó rendelkezik a megfelelő eszközökkel, (pl.:okosóra.) úgy az applikáció a kapott adatokból pontosabban meg tudja állapítani, hogy a user az edzése alatt hány kalóriát égetett el, ezzel pontosabb képet kapva az állapotáról. Ez kulcsfontosságú a megfelelő statisztikák, valamint edzéstervek kiállításához, változtatásához.</li>
+            </ol>
+            <li><p>Személyi edző kirendelése:</p></li>
+            <ol>
+                <li>Amennyiben a felhasználó igényli, úgy az AI coach mellé személyi eddző is kirendeltetik a felhasználónak, aki segítségében lehet abban, hogy pontosabb és hatékonyabb ütemtervet dolgozzanak ki.</li>
+            </ol>
+            <li><p>Havi és heti statisztikai elemzés:</p></li>
+            <ol>
+                <li><p>Amennyiben a felhasználó igényli azt, úgy az applikáció heti és havi jelentéseket készít számára, az azon a héten/hónapban nyújtott teljesítménye alapján. Ez segítségére lehet abban, hogy nyomonkövesse teljesítménye esetleges növekedését, csökkenését, valamint a személyi edzők számára is értékes információkat tartalmazhat, pl:</p></li>
+                <ol type="i">
+                    <li>Elégetett kalóriák száma</li>
+                    <li>Leadott zsír száma</li>
+                    <li>Pulzus nyugalmi állapota átlagban (Egy fizikailag fejlődő személynél ez a szám csökkenő tendenciát mutat)</li>
+                    <li>Megtett táv (futás, úszás, kerékpározás, ha az edzésterv részei a gyakorlatok.)</li>
+                </ol>
+            </ol>
+        </ul>
+
+        <h2>A felhasználók jellemzői:</h2>
+        <ul>
+            <li><p>User:</p></li>
+            <ol>
+                <li>Az alapvető felhasználói állapot. Ingyenesen elérhető mindenki számára, általában az átalakulni kívánó személyek a userek.</li>
+            </ol>
+            <li><p>Premium user:</p></li>
+            <ol>
+                <li>A user fizetős változata. Havi díj fejében bárkiből lehet prémium felhasználó. Több féle funkcióhoz férnek hozzá, valamint részletesebb jelentéseket kapnak.</li>
+            </ol>
+            <li><p>Coach:</p></li>
+            <ol>
+                <li>Azok a személyek, akik a prémium felhasználók mellé rendeltetnek ki. Lehetnek gyógytornászok, fizioterapeuták, személyi edzők, stb.</li>
+                <li>A szükséges dokumentáció felmutatásával válhatnak személyi edzővé a rendszerben.</li>
+                <li>Minden egyes ügyfelük után díjat fizetnek a FitForge-nak.</li>
+            </ol>
+            <li><p>Üzleti személyek:</p></li>
+            <ol>
+                <li>Ide tartoznak az edzőtermek, márkák, cégek, stb.</li>
+                <li>A megfelelő dokumentációk és engedélyek felmutatásával lehetséges.</li>
+                <li>A felhasználók ajánlásokat fognak kapni ezen üzleti személyektől, pl.: Melyik edzőterembe menjek a közelemben? Milyen táplálék-kiegészítőt fogyasszak? Milyen felszerelést vásároljak?</li>
+                <li>A többi felhasználótól jelentős mértékben eltérnek. Az üzleti személyek a FitForge partnerei.</li>
+                <li>Többféle kapcsolat is lehetséges:</li>
+                <ol type="i">
+                    <li><b>Kölcsönös haszonélvezői kapcsolat:</b></li>
+                    <ul>
+                        <li>Részt veszünk egymás marketinges promócióiban.</li>
+                        <li>Egyik fél sem fizet járulékot, a cél a reklám.</li>
+                    </ul>
+                    <li><b>Fizetői kapcsolat:</b></li>
+                    <ul>
+                        <li>Az üzleti személy adott összeget fizet azért, hogy megjelenhessenek az applikációban az általa nyújtott szolgáltatások.</li>
+                    </ul>
+                    <li><b>Járuléki kapcsolat:</b></li>
+                    <ul>
+                        <li>Az üzleti személy minden egyes FitForge-on keresztül eladott szolgáltatása (protein powder, konditerem bérlet, súlyzó készlet, táplálék kiegészítő, stb.) után járulékot fizet a FitForge-nak.</li>
+                    </ul>
+                </ol>
+            </ol>
+        </ul>
+
+        <div class="title"><h1>Használhatóság</h1></div>
+        <ul>
+            <li><p>Betanulási idő és felhasználóbarátság kezdőknek:</p></li>
+            <ol>
+                <li>Az applikáció grafikus felhasználói felületénél arra fogunk törekedni, hogy a lehető leg letisztultabb GUI-t hozzuk létre. A FitForge minden korosztály számára elérhető lesz, gyereketől az idősebbekig, így fontos, hogy azok is könnyedén kezeljék és megszokják, akik nem tartoznak a digitális bennszülöttek közé. Az egyszerűség, egyértelműség, és minimalista ábrázolásmód jellemzi majd az elkészült GUI-t.</li>
+                <li>A betanulási idő mindössze 1-2 nap, habár vannak hátráltató tényezők. A szoftver által készített statisztikai elemzések értelmezése egyesek számára nehezebb lehet, főleg a fiatal generációnak, idősebbeknek, nem hozzáértőknek. Ezen elemzések megértése és felhasználása több időt vehet igénybe, ezért is vannak jelen az AI és személyes eddzők, hogy segítsenek nekünk a FitForge által visszaadott elemzések megértésében, hogy azokat fejlődésünkhöz fel tudjuk használni.</li>
+            </ol>
+            <li><p>Segítség az új felhasználóknak:</p></li>
+            <ol>
+                <li>A rendszerben lesz beépített turorial funkció. Ezt az első indítás alkalmával át lehet ugrani azoknak, akik úgy gondolják, boldogulnak nélküle, azonban erősen ajánlott a tutorial végigvezetését figyelni, ugyan is sok hasznos funkcióval ismerkedhetünk meg.</li>
+                <li>Az oldalon elérhető a teljes dokumentáció, ami részletesen ismerteti az applikációt, egy rövid összefoglalóban mindent megtudhatunk a szoftverről, melyre szükségünk lehet használata során. Emellett számos oktató videóval is jelentkezni fogunk YouTube csatornánkon. Számunkra nagyon fontos, hogy az abszolút maximumot nyújtsuk, és mindenkinek egyszerű legyen a FitForge használata.</li>
+            </ol>
+            <li><p>Mennyire más a FitForge?</p></li>
+            <ol>
+                <li>A FitForge felhasználói felülete alapvetően sok hasonlóságot fog mutatni versenytársaihoz. Egyszerűség, letisztultság, hatékonyság. Nem tagadjuk, hogy ebben a szektorban már igen csak remek alkotások születtek, melyeket nehéz lenne túlszárnyalni. Nem is akarjuk, azonban méltó verseny terméket szeretnénk előállítani.</li>
+            </ol>
+        </ul>
+
+            <div class="title"><h1>Megbízhatóság:</h1></div>
+            <ul>
+                <li><p>MTBF – Mean Time Between Failures:</p></li>
+                <ol>
+                    <li>Mivel a FitForge igen csak fontos adatokat fog mérni, és egyes emberek életében elképzelhető hogy fontos szerepet fog játszani, és mélyen integrálódik majd az életükbe, így fontos, hogy a lehető leghamarabb kijavítsuk az esetlegesen felmerülő hiábkat:</li>
+                    <ol type="i">
+                        <li>Enyhe hiba:
+                            Ide tartozhat például, ha az applikáció lassabban tölt, esetleg torzítva jelenít meg bizonyos szavakat, színeket. Az ilyen jellegű hibákat 24 órán belül ki kell javítani.
+                            </li>
+                        <li>Közepes hiba:
+                            Ilyen hiba lehet például, ha valamilyen online funkci nem érhető el, nem tudunk kapcsolatba lépni az eddzőinkel, ügyfeleinkel. Az ilyen hibákat 4-6 órán belül feltétlen kezelni kell.
+                            </li>
+                        <li>Súlyos, veszélyes hiba:
+                            Ilyen hiba lehet például, ha az applikáció helytelen információkat ad valakinek az életjeleiről, pulzus számáról, vér oxigén szintjéről, stb.. Az ilyen hibák bizonyos esetekben akár halálhoz is vezethetnek. Azonnali, 30 percen belüli kezelést igényelnek.
+                            </li>
+                    </ol>
+                </ol>
+                <li><p>A rendszer pontossága:</p></li>
+                <ol>
+                    <li>A FitForge a felhasználók életjeleit képes lesz monitorozni, elemezni, és azokat felhasználni az edzésterv és étrend kialakításához. Éppen ezért rendkívüli figyelmet kell szánni a pontosságra. Kevesebb, mint 1% a hiba margin, amit megengedhetünk magunknak, ugyan is az jelentős kihatással lehet az egyének egészségére nézve.</li>
+                </ol>
+            </ul>
+
+        <div class="title"><h1>Teljesítmény:</h1></div>
+        <ul>
+        <li><p>Válaszidők:</p></li>
+        <ol>
+            <li><b>Főfunkciók válaszideje:</b> A felhasználó által gyakran használt funkciók, mint az edzésprogram betöltése, edzéskövetés indítása/leállítása, valamint a teljesítmény statisztikák megjelenítése, és egyéb fontos dolgok, legfeljebb 1 másodperces késéssel működjenek.</li>
+            <li><b>Felhasználói visszajelzés frissítése: </b> A valós idejű adatgyűjtés során (pl. pulzus, megtett távolság) a visszajelzés frissítése legfeljebb 500 ms válaszidővel lehet, hogy a felhasználó mindig aktuális infókhoz jusson.</li>
+        </ol>
+        <li><p>Áteresztőképesség:</p></li>
+        <ol>
+            <li><b>Tranzakciós áteresztőképesség:</b> Az alkalmazás szervere jó lenne, ha 100 tranzakció/másodperc feldolgozására lenne képes az edzési adatok frissítésekor.</li>
+            <li><b>Edzésmódosítások kezelése:</b> A felhasználók által végzett edzésmódosításokat (pl. gyakorlatok módosítása, edzéstervek létrehozása) az alkalmazás szerveroldali rendszere jó lenne, ha 50 művelet/másodperc sebességgel kezelné, minimum.</li>
+        </ol>
+        <li><p> Kapacitás:</p></li>
+        <ol>
+            <li><b>Adatbázis kapacitása:</b> Az alkalmazás adatbázisának legalább 1 TB tárolókapacitással kell rendelkeznie, és így hosszú távon is képes lesz felhasználói adatokat, edzésnaplókat és egyéb információkat tárolni.</li>
+            <li><b>Egyidejű felhasználói kapacitás:</b> Az alkalmazás képes legyen egy időben legalább 10,000 felhasználót kielégíteni problémamentesen, különösen csúcsidőszakokban (reggeli és esti edzésidők).</li>
+            <li><b>Tranzakciók kapacitása:</b> A rendszer napi 1 millió tranzakció feldolgozására legyen felkészítve, hogy támogassa az aktív felhasználói bázist és annak növekedését is akár.</li>
+        </ol>
+        <li><p> Korlátozott használhatóság idején teljesítendő mutatók:</p></li>
+        <ol>
+            <li><b>Karbantartás alatti szolgáltatási szint:</b> A rendszer karbantartási időszakban is biztosítsa a legalapvetőbb funkciókat (edzésprogramok betöltése, edzésnapló megtekintése), és a válaszidők ne haladják meg a 3 másodpercet, amennyiben megoldható.</li>
+            <li><b>Adatgyűjtés minimalizált erőforrásigénnyel:</b> Alacsony erőforrásigényű adatgyűjtés működjön tovább a karbantartás során, így a felhasználók edzési adatai későbbi szinkronizálásra kerülhetnek, ha kéri valaki.</li>
+
+        </ol>
+
+        <li><p>Erőforrásigények:</p></li>
+            <ol>
+                <li>Processzor sebesség: A szerveroldalon minimum 3 GHz-es CPU kell a valós idejű adatfeldolgozáshoz és a nagy számú egyidejű lekérdezés gyors kiszolgálásához.</li>
+                <li>Memória igény: A kliensoldali alkalmazás minimum 2 GB szabad memóriát igényel zökkenőmentes működéshez, míg a szerverek oldalán legalább 32 GB RAM szükséges a nagy mennyiségű adat folyamatos feldolgozásához.</li>
+                <li>Tárhely kapacitás: Az applikáció helyi tárhelyigénye minimálisan 500 MB, míg a felhős adatbázis rendszerének legalább 1 TB tárhely kellhet.</li>
+                <li>Sávszélesség: A valós idejű adatküldés és -fogadás érdekében a kliensoldali sávszélességnek legalább 5 Mbps-nek kell lennie, míg a szerverek között minimum 1 Gbps kapcsolatra van szükség az elfogadható adatáramlás fenntartásához.</li>
+            </ol>
+        </ul>
+
+        <div class="title"><h1>Támogatottság</h1></div>
+        <ul>
+            <li><p>Kódolási szabványok és elnevezési és konvenciók:</p></li>
+            <ol>
+                <li>Kódolási szabvány: A projekt során alkalmazandó kódolási szabvány az PEP 8 (Python) vagy Google Style Guide (JavaScript), hogy a kód könnyen olvasható és egységes legyen.</li>
+                <li>Elnevezési konvenciók: Minden változó, függvény és osztálynév legyen egyértelmű és konvencióknak megfelelően megválasztva (pl. camelCase a változók és PascalCase az osztályok esetében), hogy a kód gyorsan átlátható legyen karbantartás közben.</li>
+            </ol>
+
+            <li><p>Karbantartóknak és üzemeltetőknek szükséges funkciók:</p></li>
+            <ol>
+                <li>Rendszerfelügyeleti felület: Egy adminisztrátori panel elérhető kell hogy legyen, ahol a karbantartók ellenőrizhetik a rendszer állapotát, helyzetét stb., kezelhetik a felhasználói fiókokat, és ellenőrizhetik a rendszer erőforrásait és kihasználtságát.</li>
+                <li>Hibaállapot-jelentések: Automatikus értesítési rendszer, amely a karbantartókat értesíti mihamarabb a kritikus hibákról vagy a szolgáltatás esetleges kieséséről, különösen a felhasználói bejelentkezés és adatmentési hibák esetén fontos ez.</li>
+
+            </ol>
+
+            <li><p>Naplózási követelmények:</p></li>
+            <ol>
+                <li>Részletes naplózás: Az alkalmazás működése során sok naplófájl jön létre a rendszer különböző funkcióihoz, például bejelentkezés, adatkezelés és edzéskövetés naplók.</li>
+                <li>Eseménynaplók: A kritikus műveletekről (pl. adatmódosítás, belépési kísérletek) eseménynaplók is készülnek, amelyek megőrzik a felhasználói azonosítókat, infókat, időbélyegeket és művelettípusokat, hogy a rendszer átlátható és követhetővé váljon.</li>
+                <li>Naplók tárolási ideje: A naplózott adatokat legalább 6 hónapig meg kell őrizni (nem fix infó) az esetleges hibakeresési vagy biztonsági auditok céljából, majd automatikusan archiválni vagy törölni kell (nem jogszabályhoz kötött, de ajánlott) a régebbi naplófájlokat.</li>
+
+            </ol>
+            <li><p>Karbantartók munkáját segítő segédalkalmazások:</p></li>
+            <ol>
+                <li>Napló-elemző eszköz: Egy olyan segédalkalmazás, amely automatikusan elemzi a naplókat, és segít az esetleges hibák, teljesítménycsökkenések vagy potenciális optimalizálási pontok azonosításában.</li>
+                <li>Monitorozó rendszer integrációja: Az alkalmazás integrálható legyen olyan monitorozó rendszerekkel (pl. Grafana vagy Kibana), amelyek vizuálisan ábrázolják a rendszert és teljesítményét, felhasználói aktivitását és az esetleges hibákat.</li>
+            </ol>
+            <li><p>Karbantartók munkáját segítő segédalkalmazások:</p></li>
+            <ol>
+                <li>Napló-elemző eszköz: Egy olyan segédalkalmazás, amely automatikusan elemzi a naplókat, és segít az esetleges hibák, teljesítménycsökkenések vagy potenciális optimalizálási pontok azonosításában.</li>
+                <li>Monitorozó rendszer integrációja: Az alkalmazás integrálható legyen olyan monitorozó rendszerekkel (pl. Grafana vagy Kibana), amelyek vizuálisan ábrázolják a rendszert és teljesítményét, felhasználói aktivitását és az esetleges hibákat.</li>
+            </ol>
+            <li><p>Dokumentáció és támogatása kapcsolatos dolgok:</p></li>
+            <ol>
+                <li>Karbantartási dokumentáció: A rendszerhez tartozzon részletes technikai dokumentáció is, amely tartalmazza az alkalmazás funkcióit, és fontos részleteit, a rendszerarchitektúrát és a leggyakoribb hibakezelési lépéseket is!</li>
+                <li>API dokumentáció: Az API-k működéséről, használatáról és az esetleges hibaüzenetekről átfogó, könnyen érthető, könnyen kereshető dokumentáció álljon rendelkezésre, hogy a karbantartók megértsék a rendszer belső kommunikációját.</li>
+                <li>Tesztelési útmutatók: Részletes tesztelési útmutatók és automatikus tesztkészletek legyenek kéznél, hogy a rendszer módosításai után is biztosítható legyen a stabil működés.</li>
+            </ol>
+        </ul>
+
+        <div class="title"><h1>Tervezési korlátok:</h1></div>
+        <ul>
+            <li><p>Architektúrával kapcsolatos dolgok:</p></li>
+            <ol>
+                <li>Háromrétegű architektúra: Az alkalmazás felépítéséhez szükséges, érdemes háromrétegű architektúrát alkalmazni, amely külön választja az UI (felhasználói felület), a üzleti logikai, és az adatkezelési rétegeket. Ez a megközelítés nagyban könnyíti a hibaelhárítást és a skálázást.</li>
+                <li>Offline támogatás: Figyelembe kell venni, hogy a felhasználók internetkapcsolat nélkül is szeretnék használni az alkalmazást (pl. edzőteremben vagy szabadtéren). Ezért szükség van offline módra, amelyhez a helyi adattárolást, például egy SQLite adatbázis használatával oldunk meg majd.</li>
+                <li>API integráció: A külső API-k, például a Google Fit vagy az Apple HealthKit integrációja alapvetően fontos lesz, hogy a felhasználók hozzáférhessenek lépésszámokhoz, kalóriaadatokhoz és egyéb egészségügyi mutatókhoz. Ez nemcsak a felhasználói élményt növeli, hanem lehetővé teszi az egészségügyi adatok egységes kezelését.</li>
+            </ol>
+            <li><p>Programozási nyelvek és fejlesztési környezet(ek):</p></li>
+            <ol>
+                <li>Platform-specifikus nyelvek: Android fejlesztés esetén a Kotlin vagy Java nyelv használata szükséges, míg iOS-nél a Swift vagy Objective-C preferált. Hibrid megközelítés esetén a Flutter (Dart) vagy a React Native (JavaScript) használata javasolt.</li>
+                <li>Fejlesztői környezet: Az Android fejlesztéshez az Android Studio az ajánlott eszköz, míg iOS-hez az Xcode. Hibrid fejlesztés esetén a Visual Studio Code, valamint az alkalmazott keretrendszer integrált eszközei a legesélyesebb nevezők.</li>
+                <li>Adatbázis támogatás: Az offline tároláshoz javasolt az SQLite vagy Room (Androidon), illetve CoreData (iOSen) használata, míg távoli adatbázis esetén a Firebase vagy egy RESTful backend lehet adatkiszolgáló szerepébe.</li>
+
+            </ol>
+            <li><p> Újrafelhasználható esetleges részek:</p></li>
+            <ol>
+                <li>Komponens könyvtárak: Az alkalmazásban hasznos lehet újrafelhasználható komponens könyvtárak alkalmazása, mint például a Firebase Authentication (felhasználói azonosításhoz), Retrofit (API kommunikációhoz), vagy Glide/Picasso (képkezeléshez Androidon). iOS esetén az Alamofire (hálózati kérésekhez) és a Kingfisher (képkezeléshez) ajánlott.</li>
+                <li>Kész kódok és szoftverkomponensek: Az alkalmazás támogatásához rendelkezésre álló SDK-k (pl. Google Fit SDK vagy Apple HealthKit) integrálása fontos, hogy a felhasználók fitnesz- és egészségügyi adatait könnyedén kezelni lehessen. Jogosultságkezeléshez az Auth0 vagy a Firebase Authentication API javasolt.</li>
+
+            </ol>
+            <li><p> Fejlesztési módszertan és folyamatok:</p></li>
+            <ol>
+                <li>Agilis fejlesztés: Az alkalmazás fejlesztése során érdemes a SCRUM vagy Kanban módszertant is alkalmazni, amely lehetővé teszi a csapat számára a gyors iterációkat és a felhasználói igényekhez való folyamatos alkalmazkodást.</li>
+                <li>CI/CD (Folyamatos integráció és telepítés): Javasolt Git alapú verziókövetés és egy CI/CD rendszer alkalmazása (pl. GitHub Actions, Jenkins), amely lehetővé teszi az automatikus tesztelést és telepítést, gyorsítva az új verziók megjelenését.</li>
+                <li>Tesztelési előírások: Minden üzleti logikai komponenshez szükséges az unit (alias egység) tesztelése, valamint az API-hívások tesztelése. Ezen kívül UI tesztek (pl. Espresso Androidon, XCTest iOS-en) és felhasználói visszajelzések gyűjtése is ajánlott a felhasználói élmény optimalizálása érdekében.</li>
+            </ol>
+        </ul>
+
+        <div class="title"><h1>On-line dokumentáció és Help rendszer</h1></div>
+        <ul>
+            <li><p>Mint azt már korábban tárgyaltuk ezen dokumentumon belül, számos segédlet lesz fenntartva a felhasználoknak, a lehető leg kellemesebb felhaszánlói élémny nyújása érdekében:</p></li>
+            <ol>
+                <li>Online oktató videók és tutorial segédletek, a YouTube csatornánkon.</li>
+<li>Segédlet és útmutató, megtalálható lesz a webfelületen.</li>
+<li>A FitForge supportja 0-24 elérhető lesz mindenki számára.</li>
+
+            </ol>
+        </ul>
+
+    </div>
+
+    <footer>
+        Forráskód: <a href="https://github.com/Hamill48/nullak-es-egyesek.git"><img class="github-icon" src="/icon/github-icon.png" /></a>
+    </footer>
+</body>
+</html>

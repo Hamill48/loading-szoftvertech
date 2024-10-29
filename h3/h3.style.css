@@ -1,0 +1,12 @@
+.title {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ol li {
+    margin-bottom: 5px;
+}
