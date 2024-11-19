@@ -6,7 +6,7 @@
 }
 
 nav {
-    background-color: #f0f0f0;
+    background-color: #cecece;
     padding: 15px 30px;
     display: flex;
     align-items: center;
@@ -58,7 +58,7 @@ ol, ul {
 }
 
 footer {
-    background-color: #f0f0f0;
+    background-color: #cecece;
     padding: 15px 30px;
     display: flex;
     align-items: center;
