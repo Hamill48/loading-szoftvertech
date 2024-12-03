@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tesztelési Terv – FitForge Fitness</title>
+    <link rel="stylesheet" href="/styles/global.css">
+</head>
+<body style="font-family: Arial, sans-serif;">
+    <div>
+        <nav>
+            <h1>FitForge</h1>
+            <ul>
+                <li><a href="/">H1</a></li>
+                <li><a href="/h2/h2.html">H2</a></li>
+                <li><a href="/h3/h3.html">H3</a></li>
+                <li><a href="/h4/h4.html">H4</a></li>
+                <li><a href="/h5/h5.html"  class="active">H5</a></li>
+            </ul>
+        </nav>
+        <h1 style="text-align: center; color: #333; font-weight: bold;">Tesztelési Terv – FitForge Fitness</h1>
+        
+        <h2 style="color: #333; font-weight: bold;">Tesztelési Célkitűzések</h2>
+        <p style="color: #333; font-size: 16px;">
+            A tesztelés célja:
+        </p>
+        <ol style="color: #555;">
+            <li>Az alkalmazás funkcionális és nem funkcionális követelményeinek ellenőrzése.</li>
+            <li>A felhasználói élmény optimalizálása (UI/UX).</li>
+            <li>Adatbiztonság és stabilitás biztosítása.</li>
+            <li>Az alkalmazás különböző környezetekben történő helyes működésének validálása.</li>
+        </ol>
+
+        <h2 style="color: #333; font-weight: bold;">Tesztelési Stratégiák</h2>
+
+        <h3 style="color: #333; font-weight: bold;">Funkcionális tesztelés</h3>
+        <ul style="color: #555;">
+            <li>Az alapvető funkciók, például regisztráció, bejelentkezés, edzéstervek kezelése és aktivitáskövetés ellenőrzése.</li>
+            <li>Ellenőrizzük a felhasználói interakciók megfelelő kezelését, ideértve a hibakezelést is.</li>
+        </ul>
+
+        <h3 style="color: #333; font-weight: bold;">Egységtesztelés</h3>
+        <ul style="color: #555;">
+            <li>Az egyes kódrészletek (osztályok, metódusok) helyes működésének ellenőrzése.</li>
+            <li>Automata tesztelési keretrendszerek, mint a JUnit és Mockito alkalmazása.</li>
+        </ul>
+
+        <h3 style="color: #333; font-weight: bold;">Integrációs tesztelés</h3>
+        <ul style="color: #555;">
+            <li>A különböző modulok közötti együttműködés tesztelése.</li>
+            <li>Külső eszközökkel (okosóra, pulzusmérő) történő integráció vizsgálata.</li>
+        </ul>
+
+        <h3 style="color: #333; font-weight: bold;">Teljesítménytesztelés</h3>
+        <ul style="color: #555;">
+            <li>Az alkalmazás válaszidejének, adatfeldolgozási sebességének és terhelhetőségének vizsgálata.</li>
+            <li>Tesztelési eszközök: JMeter, Gatling.</li>
+        </ul>
+
+        <h3 style="color: #333; font-weight: bold;">Felhasználói tesztelés (UAT)</h3>
+        <ul style="color: #555;">
+            <li>A végfelhasználók bevonásával történő valós környezetben végzett tesztelés.</li>
+            <li>Kérdőívek és visszajelzések gyűjtése.</li>
+        </ul>
+            <h2 style="color: #333; font-weight: bold;">Tesztelési Környezet</h2>
+        
+            <h3 style="color: #333; font-weight: bold;">Operációs rendszerek:</h3>
+            <ul style="color: #555;">
+                <li>Android 8.0 és újabb.</li>
+                <li>iOS 13.0 és újabb.</li>
+            </ul>
+        
+            <h3 style="color: #333; font-weight: bold;">Eszközök:</h3>
+            <ul style="color: #555;">
+                <li>Mobiltelefonok: Különböző kijelzőméretek (4", 5.5", 6.5").</li>
+                <li>Okosórák: Garmin, Fitbit, Apple Watch.</li>
+            </ul>
+        
+            <h3 style="color: #333; font-weight: bold;">Böngészők (ha van webes felület):</h3>
+            <ul style="color: #555;">
+                <li>Chrome, Safari, Firefox.</li>
+            </ul>
+        
+            <h3 style="color: #333; font-weight: bold;">Hálózati környezetek:</h3>
+            <ul style="color: #555;">
+                <li>Offline mód (hálózat nélkül).</li>
+                <li>Lassú kapcsolat (3G).</li>
+                <li>Gyors kapcsolat (5G, Wi-Fi).</li>
+            </ul>
+            
+            <img style="width: 700px;" src="../images/image1.png"/><br />
+            <img style="width: 700px; margin-left: 5px;" src="../images/image2.jpg"/>
+
+            <h2 style="color: #333; font-weight: bold;">Teszteléshez Szükséges Implementációs Elemek</h2>
+
+            <h3 style="color: #333; font-weight: bold;">1. Tesztadatok előkészítése:</h3>
+            <ul style="color: #555;">
+                <li>Felhasználói profilok különböző adatkészletekkel (pl. hiányos és teljes adatok).</li>
+                <li>Szimulált aktivitási adatok (pl. lépésszám, kalória).</li>
+            </ul>
+        
+            <h3 style="color: #333; font-weight: bold;">2. Automatizált tesztelési eszközök:</h3>
+            <ul style="color: #555;">
+                <li>Selenium az UI-tesztekhez.</li>
+                <li>JUnit, Mockito egység- és integrációs tesztekhez.</li>
+            </ul>
+        
+            <h3 style="color: #333; font-weight: bold;">3. Kézi tesztelési forgatókönyvek:</h3>
+            <ul style="color: #555;">
+                <li>Részletes dokumentáció minden egyes teszteset lépéseiről.</li>
+            </ul>
+        
+            <h3 style="color: #333; font-weight: bold;">4. Hibakövető rendszer:</h3>
+            <ul style="color: #555;">
+                <li>Hibák nyomon követése Jira vagy Trello segítségével.</li>
+            </ul>
+
+            <img style="width: 700px; margin-left: 5px;" src="../images/image3.png"/>
+
+            <h2 style="font-weight: bold;">OMT Objektumtervezési Fázisának Megfelelő Tevékenységek – FitForge Alkalmazás</h2>
+
+<h3 style="font-weight: bold;">1. A rendszer vezérlésének kidolgozása</h3>
+
+<h4 style="font-weight: bold;">Aktív és passzív objektumok azonosítása és tervezése</h4>
+
+<ul>
+    <li><strong>Aktív objektumok (kezdeményeznek műveleteket):</strong>
+        <ul>
+            <li><strong>Felhasználó:</strong> Regisztrál, bejelentkezik, edzésterveket hoz létre, nyomon követi az aktivitást.</li>
+            <li><strong>Okosóra/Szenzor:</strong> Adatokat küld az alkalmazásnak (pl. pulzus, lépésszám, kalóriaégetés).</li>
+            <li><strong>Tesztelési modul:</strong> Automatikusan generál adatokat tesztelési célokra.</li>
+        </ul>
+    </li>
+
+    <li><strong>Passzív objektumok (adatokat tárolnak, várják az aktív objektumok műveleteit):</strong>
+        <ul>
+            <li><strong>Felhasználói profil:</strong> Tárolja a személyes adatokat (név, életkor, magasság, súly, célok).</li>
+            <li><strong>Edzéstervek:</strong> Az egyes edzések részletei (típus, időtartam, intenzitás).</li>
+            <li><strong>Történeti adatok:</strong> Tárolja a múltbéli aktivitásokat és teljesítményeket.</li>
+        </ul>
+    </li>
+</ul>
+
+<h3 style="font-weight: bold;">2. Vezérlő objektumok kialakítása</h3>
+<ul>
+    <li><strong>Rendszervezérlő:</strong> Feldolgozza a felhasználói bemeneteket (pl. regisztráció, bejelentkezés). Kezeli a külső eszközökkel való adatcserét.</li>
+    <li><strong>Edzéstervek-kezelő:</strong> Felhasználói célok alapján testre szabott edzésterveket generál. Figyelemmel kíséri a tervek teljesítését.</li>
+    <li><strong>Adatszinkronizáló:</strong> Offline adatok feldolgozása és szinkronizálása, amikor a hálózati kapcsolat helyreáll.</li>
+    <li><strong>Tesztelésvezérlő:</strong> Automatikusan végrehajtja a teszteseteket és generálja a tesztadatokat.</li>
+</ul>
+
+<h3 style="font-weight: bold;">3. Láthatóság biztosítása a szükséges üzenetváltásokhoz</h3>
+<ul>
+    <li><strong>Láthatóságot biztosítunk a vezérlő objektumok és a tárolt adatok között:</strong>
+        <ul>
+            <li><strong>Felhasználói profil ↔ Rendszervezérlő:</strong> Felhasználói adatok lekérése és módosítása.</li>
+            <li><strong>Edzésterv-kezelő ↔ Történeti adatok:</strong> Teljesítményadatok alapján személyre szabott ajánlások.</li>
+            <li><strong>Okosóra ↔ Adatszinkronizáló:</strong> Valós idejű adatátvitel és offline tárolás.</li>
+        </ul>
+    </li>
+</ul>
+<h2 style="font-weight: bold;">2. Osztályok közötti kapcsolatok implementálási módjai</h2>
+
+<h3 style="font-weight: bold;">Kapcsolatok kidolgozása</h3>
+<ul>
+    <li><strong>Felhasználói profil ↔ Edzéstervek:</strong>
+        <ul>
+            <li>Egy felhasználóhoz több edzésterv tartozhat.</li>
+            <li>A kapcsolat egy-a-többhöz típusú.</li>
+        </ul>
+    </li>
+    <li><strong>Edzéstervek ↔ Történeti adatok:</strong>
+        <ul>
+            <li>Egy edzéstervhez több teljesítményrekord tartozik.</li>
+            <li>A kapcsolat egy-a-többhöz típusú.</li>
+        </ul>
+    </li>
+    <li><strong>Felhasználói profil ↔ Okosóra:</strong>
+        <ul>
+            <li>Az adatok szinkronizálásához a kapcsolat egy-az-egyhez típusú.</li>
+        </ul>
+    </li>
+</ul>
+
+<h3 style="font-weight: bold;">Implementációs osztályok tervezése</h3>
+<ul>
+    <li><strong>Adatkezelő osztály:</strong>
+        <ul>
+            <li>Adatbázisműveletek végrehajtása (CRUD műveletek).</li>
+            <li>Kapcsolatok kezelése ORM (pl. Hibernate) segítségével.</li>
+        </ul>
+    </li>
+    <li><strong>Kommunikációs osztály:</strong>
+        <ul>
+            <li>API-k integrációja harmadik fél eszközeivel (okosórák, pulzusmérők).</li>
+        </ul>
+    </li>
+    <li><strong>Üzleti logika osztály:</strong>
+        <ul>
+            <li>A vezérlési logika megvalósítása (pl. edzéstervek testreszabása, célok elemzése).</li>
+        </ul>
+    </li>
+</ul>
+<h2 style="font-weight: bold;">FitForge – Skeleton vagy Prototípus Jellegű Implementációk</h2>
+
+<h3 style="font-weight: bold;">Cél</h3>
+<p>A skeleton vagy prototípus implementáció célja a fitness alkalmazás alapvető funkcióinak gyors és egyszerű bemutatása, hogy azok működőképességét validálni lehessen a fejlesztés kezdeti szakaszában. Az implementáció nem tartalmaz teljes funkcionalitást, de lefedi az alábbiakat:</p>
+<ul>
+    <li>Alapvető adatáramlási logika (input → feldolgozás → output).</li>
+    <li>Kritikus felhasználói interakciók.</li>
+    <li>Főbb komponensek közötti kapcsolat.</li>
+</ul>
+
+<h3 style="font-weight: bold;">Skeleton Implementáció Tartalma</h3>
+<h4 style="font-weight: bold;">1. Rendszer Alaparchitektúrája</h4>
+<p>Az alkalmazás fő komponensei:</p>
+<ul>
+    <li><strong>Felhasználói interfész (UI):</strong>
+        <ul>
+            <li>Egyszerű, interaktív képernyők a regisztrációhoz, bejelentkezéshez és edzéstervek létrehozásához.</li>
+        </ul>
+    </li>
+    <li><strong>Backend logika:</strong>
+        <ul>
+            <li>A vezérlő objektumok alapvető működése (pl. adatbevitel feldolgozása).</li>
+        </ul>
+    </li>
+    <li><strong>Adatbázis-réteg:</strong>
+        <ul>
+            <li>Alapszintű adatok tárolása és lekérdezése.</li>
+        </ul>
+    </li>
+    <li><strong>Eszközintegráció:</strong>
+        <ul>
+            <li>Külső eszközökből származó adatok szimulációja (pl. szívritmusadatok generálása).</li>
+        </ul>
+    </li>
+</ul>
+
+<h4 style="font-weight: bold;">2. Kulcsfunkciók Skeleton Szintű Megvalósítása</h4>
+<p>A következő funkciók kerülnek implementálásra prototípus szinten:</p>
+<ul>
+    <li>Felhasználói regisztráció és bejelentkezés.</li>
+    <li>Edzéstervek létrehozása és testreszabása.</li>
+    <li>Alapvető adatfeldolgozási logika.</li>
+    <li>Szinkronizálás külső eszközökkel (pl. okosóra adatainak szimulációja).</li>
+</ul>
+<h3 style="font-weight: bold;">Felhasználói Regisztráció és Bejelentkezés</h3>
+
+<h4 style="font-weight: bold;">1. Regisztráció:</h4>
+<ul>
+    <li>Felhasználó neve, e-mail címe és jelszava bekérése.</li>
+    <li>Validáció: ellenőrzi az üres mezőket és az e-mail formátumát.</li>
+    <li>Adatok mentése egy egyszerű adatbázisba (SQLite vagy egy JSON fájl).</li>
+</ul>
+<img style="width: 400px; margin-left: 5px;" src="../images/image4.png"/><br/>
+<img style="width: 400px; margin-left: 5px;" src="../images/image5.png"/><br/>
+<img style="width: 400px; margin-left: 5px;" src="../images/image6.png"/><br/>
+    </div>
+    <footer>
+        Forráskód: <a href="https://github.com/Hamill48/nullak-es-egyesek.git"><img class="github-icon" src="/icon/github-icon.png" /></a>
+    </footer>
+</body>
+</html>
